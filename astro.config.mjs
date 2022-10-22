@@ -6,6 +6,6 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://d-abiyoga.github.io',
-    base: '/personal-site',
+    base: '/',
 	integrations: [mdx(), sitemap()],
 });
