@@ -2,19 +2,50 @@
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
 const { href, class: className, ...props } = Astro.props;
-const isActive = href === Astro.url.pathname.replace(/\/$/, '');
+const isActive = href === Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+  <slot />
 </a>
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+  :root {
+    --inactive-color: #000;
+    --hover-color: #04a5e5;
+    --underline-color: #04a5e5;
+    --underline-color-active: #209fb5;
+  }
+
+  a {
+    @apply text-base sm:text-lg;
+    text-decoration: none;
+    color: var(--inactive-color);
+    position: relative;
+    padding: 0.25rem 0.25rem;
+  }
+  a:hover,
+  a:active {
+    color: var(--hover-color);
+  }
+
+  /* Animation */
+  a::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--underline-color);
+    position: absolute;
+    bottom: -0.2em;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  a:hover::after,
+  a.active::after {
+    width: 100%;
+  }
+
+  a.active::after {
+    background-color: var(--underline-color-active);
+  }
 </style>

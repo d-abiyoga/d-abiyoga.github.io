@@ -1,27 +1,12 @@
 ---
-import type { MarkdownInstance } from "astro";
 import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import type { Frontmatter } from "@types";
 import "@styles/global.css";
 
-export interface Props {
-  post: MarkdownInstance<Frontmatter>;
-}
-
-const { frontmatter, Content } = Astro.props.post;
-const { title, description, published_at, modified_at, heroImage } =
+const { frontmatter } = Astro.props;
+const { title, description, published_at, updatedDate, heroImage } =
   frontmatter;
-
-let publishedAt;
-if (published_at !== undefined) {
-  publishedAt = new Date(published_at).toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
 ---
 
 <html lang="en">
@@ -45,18 +30,24 @@ if (published_at !== undefined) {
       <article>
         {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
         <h1 class="title">{title}</h1>
-        {published_at && <time>{publishedAt}</time>}
+        {published_at && <time>{published_at}</time>}
         {
-          modified_at && (
+          updatedDate && (
             <div>
-              Last updated on <time>{modified_at}</time>
+              Last updated on <time>{updatedDate}</time>
             </div>
           )
         }
         <hr />
-        <Content />
+        <slot class="md" />
       </article>
     </main>
     <Footer />
-  </body>
+  </body><style>
+    article {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  </style>
 </html>

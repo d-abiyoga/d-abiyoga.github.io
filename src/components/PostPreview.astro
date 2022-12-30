@@ -1,0 +1,48 @@
+---
+import { getMonthName } from "../utils";
+import slugify from "../utils/slugify";
+
+const { frontmatter: post } = Astro.props.post;
+let publishedAt = new Date(post.published_at);
+let date = publishedAt.getDate();
+let month = getMonthName(publishedAt);
+let year = publishedAt.getFullYear();
+
+let url = "blog/" + slugify(post.title);
+---
+
+<li class="post-preview">
+  <!-- <a class="link-box" href={url}> -->
+  <a class="link-box" href={url}>
+    <div>
+      <time class="post-preview__date">{date} {month} {year}</time>
+      <h4 class="post-preview__title">
+        {post.title}
+      </h4>
+      <p class="post-preview__desc">
+        {post.description}
+      </p>
+    </div>
+  </a>
+</li>
+<style>
+  .post-preview {
+    @apply border-0 border-orange-200 flex px-3 py-2 hover:cursor-pointer hover:bg-orange-200 hover:scale-[1.02];
+    transition: 0.2s ease-in-out;
+  }
+  .link-box {
+    display: block;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  time {
+    @apply text-sm text-slate-400;
+  }
+  .post-preview__title {
+    @apply text-xl text-black font-semibold underline mb-2;
+  }
+  .post-preview__desc {
+    @apply text-base leading-6;
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import type { MarkdownInstance } from "astro";
+import PostPreview from "./PostPreview.astro";
+
+export interface Props {
+  posts: MarkdownInstance<Record<string, any>>[];
+}
+
+const { posts } = Astro.props;
+const sortedPosts: Record<string, any>[] = posts.sort(
+  (a: any, b: any) =>
+    new Date(b.frontmatter.published_at).valueOf() -
+    new Date(a.frontmatter.published_at).valueOf()
+);
+let threeLastPosts = sortedPosts.slice(0, 3);
+---
+
+<section class="post-preview">
+  {threeLastPosts.map((post) => <PostPreview post={post} />)}
+  <a href="/blog">See all posts</a>
+</section>
+
+<style>
+  .post-preview {
+    @apply flex flex-col gap-3;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--theme-text);
+  }
+
+  a {
+    @apply font-semibold text-amber-700;
+  }
+</style>
