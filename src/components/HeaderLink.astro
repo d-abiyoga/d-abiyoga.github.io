@@ -9,13 +9,6 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, "");
   <slot />
 </a>
 <style>
-  :root {
-    --inactive-color: #000;
-    --hover-color: #04a5e5;
-    --underline-color: #04a5e5;
-    --underline-color-active: #209fb5;
-  }
-
   a {
     @apply text-base sm:text-lg;
     text-decoration: none;
@@ -23,17 +16,17 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, "");
     position: relative;
     padding: 0.25rem 0.25rem;
   }
-  a:hover,
+  /* a:hover,
   a:active {
-    color: var(--hover-color);
-  }
+    color: var(--accent-color);
+  } */
 
   /* Animation */
   a::after {
     content: "";
     width: 0;
     height: 3px;
-    background-color: var(--underline-color);
+    background-color: var(--accent-color);
     position: absolute;
     bottom: -0.2em;
     left: 0;
@@ -46,6 +39,6 @@ const isActive = href === Astro.url.pathname.replace(/\/$/, "");
   }
 
   a.active::after {
-    background-color: var(--underline-color-active);
+    background-color: var(--accent-color);
   }
 </style>

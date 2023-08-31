@@ -27,9 +27,14 @@ let url = "blog/" + slugify(post.title);
 </li>
 <style>
   .post-preview {
-    @apply border-0 border-orange-200 flex px-3 py-2 hover:cursor-pointer hover:bg-orange-200 hover:scale-[1.02];
+    @apply border-0 flex px-3 py-2 hover:cursor-pointer hover:scale-[1.02];
     transition: 0.2s ease-in-out;
   }
+
+  .post-preview:hover {
+    background-color: var(--bg-color-accent);
+  }
+
   .link-box {
     display: block;
     z-index: 1;
@@ -37,12 +42,16 @@ let url = "blog/" + slugify(post.title);
     height: 100%;
   }
   time {
-    @apply text-sm text-slate-400;
+    @apply text-sm
   }
   .post-preview__title {
-    @apply text-xl text-black font-semibold underline mb-2;
+    @apply text-xl font-semibold underline mb-2;
+    color: var(--title-color)
   }
+
   .post-preview__desc {
     @apply text-base leading-6;
+    color: var(--text-color)
   }
+
 </style>

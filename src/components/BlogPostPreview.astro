@@ -29,10 +29,16 @@ let threeLastPosts = sortedPosts.slice(0, 3);
     margin: 0;
     font-size: 2.25rem;
     font-weight: 700;
-    color: var(--theme-text);
+    color: var(--title-color);
   }
 
   a {
-    @apply font-semibold text-amber-700;
+    @apply font-semibold;
+    color: var(--accent-color)
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
 </style>

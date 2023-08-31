@@ -27,11 +27,19 @@ const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
       }
       ul li time {
         flex: 0 0 130px;
-        font-style: italic;
-        color: #595959;
+        @apply italic;
       }
+
+      ul li a {
+        /* color: var(--text-color); */
+        text-decoration: underline;
+      }
+
+      ul li a:hover {
+        color: var(--accent-color);
+      }
+
       ul li a:visited {
-        color: #8e32dc;
       }
     </style>
   </head>

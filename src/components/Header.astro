@@ -1,11 +1,13 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 /* import { SITE_TITLE } from "../config"; */
 ---
 
 <header>
   <h2><a class="logo" href="/">d-abiyoga</a></h2>
   <nav>
+    <ThemeToggle />
     <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
     <HeaderLink href="/about">About</HeaderLink>
@@ -29,7 +31,7 @@ import HeaderLink from "./HeaderLink.astro";
   .logo {
     text-decoration: none;
     text-underline: none;
-    color: #000;
+    color: var(--title-color);
   }
 
   nav {
@@ -37,4 +39,5 @@ import HeaderLink from "./HeaderLink.astro";
     justify-content: space-between;
     align-items: center;
   }
+
 </style>
