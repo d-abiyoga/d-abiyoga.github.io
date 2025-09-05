@@ -4,9 +4,9 @@ import ThemeToggle from "./ThemeToggle.astro";
 /* import { SITE_TITLE } from "../config"; */
 ---
 
-<header>
+<header class="flex">
   <h2><a class="logo" href="/">d-abiyoga</a></h2>
-  <nav>
+  <nav class="flex">
     <ThemeToggle />
     <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
@@ -18,7 +18,6 @@ import ThemeToggle from "./ThemeToggle.astro";
 </header>
 <style>
   header {
-    @apply flex;
     margin: 0em 0 2em;
     justify-content: space-between;
     align-items: center;
@@ -35,7 +34,6 @@ import ThemeToggle from "./ThemeToggle.astro";
   }
 
   nav {
-    @apply flex;
     justify-content: space-between;
     align-items: center;
   }

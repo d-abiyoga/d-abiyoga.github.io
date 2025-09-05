@@ -1,9 +1,8 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
-import slugify from "../../utils/slugify";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import slugify from "@utils/slugify";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
@@ -13,37 +12,7 @@ const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
 );
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      ul {
-        list-style-type: none;
-        padding: unset;
-      }
-      ul li {
-        display: flex;
-      }
-      ul li time {
-        flex: 0 0 130px;
-        @apply italic;
-      }
-
-      ul li a {
-        /* color: var(--text-color); */
-        text-decoration: underline;
-      }
-
-      ul li a:hover {
-        color: var(--accent-color);
-      }
-
-      ul li a:visited {
-      }
-    </style>
-  </head>
-  <body>
+<Layout>
     <Header />
     <main>
       <section>
@@ -51,7 +20,7 @@ const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
           {
             posts.map((post) => (
               <li>
-                <time datetime={post.frontmatter.published_at}>
+                <time class="italic" datetime={post.frontmatter.published_at}>
                   {new Date(post.frontmatter.published_at).toLocaleDateString(
                     "en-us",
                     {
@@ -71,5 +40,29 @@ const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
       </section>
     </main>
     <Footer />
-  </body>
-</html>
+</Layout>
+
+<style>
+ul {
+  list-style-type: none;
+  padding: unset;
+}
+ul li {
+  display: flex;
+}
+ul li time {
+  flex: 0 0 130px;
+}
+
+ul li a {
+  /* color: var(--text-color); */
+  text-decoration: underline;
+}
+
+ul li a:hover {
+  color: var(--accent-color);
+}
+
+ul li a:visited {
+}
+</style>

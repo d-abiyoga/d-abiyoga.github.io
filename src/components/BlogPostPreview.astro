@@ -15,16 +15,12 @@ const sortedPosts: Record<string, any>[] = posts.sort(
 let threeLastPosts = sortedPosts.slice(0, 3);
 ---
 
-<section class="post-preview">
+<section class="flex flex-col gap-3">
   {threeLastPosts.map((post) => <PostPreview post={post} />)}
-  <a href="/blog">See all posts</a>
+  <a href="/blog" class="font-semibold">See all posts</a>
 </section>
 
 <style>
-  .post-preview {
-    @apply flex flex-col gap-3;
-  }
-
   .title {
     margin: 0;
     font-size: 2.25rem;
@@ -33,7 +29,6 @@ let threeLastPosts = sortedPosts.slice(0, 3);
   }
 
   a {
-    @apply font-semibold;
     color: var(--accent-color)
   }
 

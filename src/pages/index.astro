@@ -1,20 +1,14 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import BlogPostPreview from "@components/BlogPostPreview.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@config";
 import type { Frontmatter } from "@types";
+import Layout from "@layouts/Layout.astro";
 const posts = await Astro.glob<Frontmatter>("/content/blog/*.md");
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-
-  <body>
+<Layout>
     <Header title={SITE_TITLE} />
     <main class="flex flex-col gap-8">
       <section>
@@ -30,22 +24,15 @@ const posts = await Astro.glob<Frontmatter>("/content/blog/*.md");
       </section>
 
       <section>
-        <h2>Recent Posts</h2>
+        <h2 class="text-2xl py-2">Recent Posts</h2>
         <BlogPostPreview posts={posts} />
       </section>
     </main>
     <Footer />
-    <style>
-      mark {
-        background-color: #e5c890;
-      }
-      h2 {
-        @apply text-2xl;
-      }
+</Layout>
 
-      section > h2 {
-        @apply py-2;
-      }
-    </style>
-  </body>
-</html>
+<style>
+  mark {
+    background-color: #e5c890;
+  }
+</style>

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /*
   The CSS in this style tag is based off of Bear Blog's default CSS.
@@ -69,7 +67,7 @@ h1 {
   @apply text-3xl font-bold;
 }
 h2 {
-  @apply text-xl font-bold;
+  @apply text-2xl font-bold;
 }
 
 article > p {

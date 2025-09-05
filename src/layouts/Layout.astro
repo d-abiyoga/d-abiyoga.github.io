@@ -1,0 +1,15 @@
+---
+import "@styles/global.css";
+import "../styles/global.css";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@config";
+import BaseHead from "@components/BaseHead.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+<body>
+  <slot />
+</body>
