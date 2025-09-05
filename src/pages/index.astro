@@ -9,26 +9,26 @@ const posts = await Astro.glob<Frontmatter>("/content/blog/*.md");
 ---
 
 <Layout>
-    <Header title={SITE_TITLE} />
-    <main class="flex flex-col gap-8">
-      <section>
-        <h1>🧑‍🚀 Hi, I'm Dimas!</h1>
-        <p>
-          I formerly work as a Mechanical Engineer for 5 years. I took a leap of
-          faith to taught myself about software development from various online
-          sources and landed my first job as a <mark class=""
-            >Backend Engineer</mark
-          >. I believe in online learning. Mostly write my code in Golang and
-          Typescript.
-        </p>
-      </section>
+  <Header title={SITE_TITLE} />
+  <main class="flex flex-col gap-8">
+    <section>
+      <h1>🧑‍🚀 Hi, I'm Dimas!</h1>
+      <p>
+        I formerly work as a Mechanical Engineer for 5 years. I took a leap of
+        faith to taught myself about software development from various online
+        sources and landed my first job as a <mark class=""
+          >Backend Engineer</mark
+        >. I believe in online learning. Mostly write my code in Golang and
+        Typescript.
+      </p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl py-2">Recent Posts</h2>
-        <BlogPostPreview posts={posts} />
-      </section>
-    </main>
-    <Footer />
+    <section>
+      <h2 class="text-2xl py-2">Recent Posts</h2>
+      <BlogPostPreview posts={posts} />
+    </section>
+  </main>
+  <Footer />
 </Layout>
 
 <style>

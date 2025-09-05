@@ -22,24 +22,25 @@ if (published_at !== undefined) {
   });
 }
 ---
+
 <Layout>
-    <main>
-      <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-        <h1 class="title">{title}</h1>
-        {published_at && <time>{publishedAt}</time>}
-        {
-          modified_at && (
-            <div>
-              Last updated on <time>{modified_at}</time>
-            </div>
-          )
-        }
-        <hr />
-        <Content />
-      </article>
-    </main>
-    <Footer />
+  <main>
+    <article>
+      {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+      <h1 class="title">{title}</h1>
+      {published_at && <time>{publishedAt}</time>}
+      {
+        modified_at && (
+          <div>
+            Last updated on <time>{modified_at}</time>
+          </div>
+        )
+      }
+      <hr />
+      <Content />
+    </article>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
