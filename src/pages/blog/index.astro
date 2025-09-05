@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import slugify from "@utils/slugify";
 
@@ -13,7 +12,6 @@ const posts = (await Astro.glob("/content/blog/*.{md,mdx}")).sort(
 ---
 
 <Layout>
-    <Header />
     <main>
       <section>
         <ul>
